@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
-import { API_BASE } from "../lib/api";
+import { API_BASE, apiHeaders } from "../lib/api";
 
 /* ── Slide components ──────────────────────────────────────────────── */
 import {
@@ -233,15 +233,15 @@ export default function Home() {
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/options`)
+    fetch(`${API_BASE}/api/options`, { headers: apiHeaders })
       .then((r) => r.json())
       .then(setOptions)
       .catch(() => {});
-    fetch(`${API_BASE}/api/sample-images`)
+    fetch(`${API_BASE}/api/sample-images`, { headers: apiHeaders })
       .then((r) => r.json())
       .then((d) => setSamples(d.samples || []))
       .catch(() => {});
-    fetch(`${API_BASE}/api/training-info`)
+    fetch(`${API_BASE}/api/training-info`, { headers: apiHeaders })
       .then((r) => r.json())
       .then(setTrainingInfo)
       .catch(() => {});
@@ -275,7 +275,7 @@ export default function Home() {
 
   const loadSample = useCallback(async (name: string) => {
     try {
-      const res = await fetch(`${API_BASE}/api/sample-images/${name}`);
+      const res = await fetch(`${API_BASE}/api/sample-images/${name}`, { headers: apiHeaders });
       const data = await res.json();
       const b64 = data.image;
       const byteStr = atob(b64);
@@ -302,7 +302,7 @@ export default function Home() {
     fd.append("variant", variant);
     fd.append("level", String(level));
     try {
-      const res = await fetch(`${API_BASE}/api/process`, { method: "POST", body: fd });
+      const res = await fetch(`${API_BASE}/api/process`, { method: "POST", body: fd, headers: apiHeaders });
       if (!res.ok) {
         const err = await res.json().catch(() => ({ detail: res.statusText }));
         throw new Error(err.detail || "Processing failed");

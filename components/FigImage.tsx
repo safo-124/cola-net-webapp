@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { API_BASE } from "../lib/api";
+import { API_BASE, apiHeaders } from "../lib/api";
 
 /**
  * Displays a paper figure from the backend /api/figs endpoint.
@@ -35,7 +35,7 @@ export default function FigImage({
       return;
     }
     let cancelled = false;
-    fetch(`${API_BASE}/api/figs/${encodeURIComponent(name)}`)
+    fetch(`${API_BASE}/api/figs/${encodeURIComponent(name)}`, { headers: apiHeaders })
       .then((r) => {
         if (!r.ok) throw new Error("Not found");
         return r.json();
@@ -105,7 +105,7 @@ export async function getFigBase64(
 ): Promise<{ data: string; mime: string } | null> {
   if (cache.has(name)) return cache.get(name)!;
   try {
-    const r = await fetch(`${API_BASE}/api/figs/${encodeURIComponent(name)}`);
+    const r = await fetch(`${API_BASE}/api/figs/${encodeURIComponent(name)}`, { headers: apiHeaders });
     if (!r.ok) return null;
     const d = await r.json();
     cache.set(name, { data: d.data, mime: d.mime });
