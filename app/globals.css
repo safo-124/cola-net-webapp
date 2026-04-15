@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #09090b;
+  --bg-alt: #0f0f12;
+  --card: #131318;
+  --card-elevated: #1a1a22;
+  --border: #23232d;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-dim: rgba(59, 130, 246, 0.12);
+  --red: #ef4444;
+  --red-dim: rgba(239, 68, 68, 0.12);
+  --green: #22c55e;
+  --green-dim: rgba(34, 197, 94, 0.12);
+  --yellow: #eab308;
+  --yellow-dim: rgba(234, 179, 8, 0.12);
+  --orange: #f97316;
+  --orange-dim: rgba(249, 115, 22, 0.12);
+  --purple: #a855f7;
+  --purple-dim: rgba(168, 85, 247, 0.12);
+  --cyan: #06b6d4;
+  --cyan-dim: rgba(6, 182, 212, 0.12);
+  --text: #e5e5e5;
+  --text-muted: #888;
+  --text-dim: #555;
+  --fig-bg: #ffffff;
+  --bar-track: #1a1a1a;
+  --sample-btn-bg: #1a1a1a;
+  --highlight-green: #4ade80;
+  --highlight-red: #f87171;
+  --highlight-blue: #60a5fa;
+  --highlight-orange: #fb923c;
+  --highlight-yellow: #facc15;
+  --highlight-zinc: #a1a1aa;
+  --code-bg: var(--bg);
+}
+
+:root.light {
+  --bg: #f8f9fa;
+  --bg-alt: #eef0f2;
+  --card: #ffffff;
+  --card-elevated: #f0f1f3;
+  --border: #d4d7dc;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-dim: rgba(37, 99, 235, 0.08);
+  --red: #dc2626;
+  --red-dim: rgba(220, 38, 38, 0.08);
+  --green: #16a34a;
+  --green-dim: rgba(22, 163, 74, 0.08);
+  --yellow: #ca8a04;
+  --yellow-dim: rgba(202, 138, 4, 0.08);
+  --orange: #ea580c;
+  --orange-dim: rgba(234, 88, 12, 0.08);
+  --purple: #9333ea;
+  --purple-dim: rgba(147, 51, 234, 0.08);
+  --cyan: #0891b2;
+  --cyan-dim: rgba(8, 145, 178, 0.08);
+  --text: #1a1a2e;
+  --text-muted: #555;
+  --text-dim: #999;
+  --fig-bg: #ffffff;
+  --bar-track: #e5e7eb;
+  --sample-btn-bg: #f3f4f6;
+  --highlight-green: #16a34a;
+  --highlight-red: #dc2626;
+  --highlight-blue: #2563eb;
+  --highlight-orange: #ea580c;
+  --highlight-yellow: #ca8a04;
+  --highlight-zinc: #71717a;
+  --code-bg: #f1f3f5;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Cards */
+.card { @apply rounded-xl border p-5; background: var(--card); border-color: var(--border); }
+
+/* Buttons */
+.btn-primary { @apply px-6 py-2.5 rounded-lg font-semibold text-sm transition-all; background: var(--accent); color: white; }
+.btn-primary:hover:not(:disabled) { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.25); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Navigation tabs */
+.nav-tab { @apply px-4 py-2.5 text-sm font-medium rounded-lg transition-all cursor-pointer; color: var(--text-muted); background: transparent; }
+.nav-tab:hover { color: var(--text); background: var(--card); }
+.nav-tab-active { color: white; background: var(--accent); }
+
+/* Diagram boxes */
+.diagram-box { @apply rounded-lg px-4 py-2.5 text-center font-semibold text-xs border-2; min-width: 80px; border-color: var(--border); background: var(--card); color: var(--text-muted); }
+.diagram-box-accent { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+.diagram-box-green { border-color: var(--green); background: var(--green-dim); color: var(--green); }
+.diagram-box-red { border-color: var(--red); background: var(--red-dim); color: var(--red); }
+.diagram-box-yellow { border-color: var(--yellow); background: var(--yellow-dim); color: var(--yellow); }
+.diagram-box-purple { border-color: var(--purple); background: var(--purple-dim); color: var(--purple); }
+.diagram-box-orange { border-color: var(--orange); background: var(--orange-dim); color: var(--orange); }
+.diagram-box-cyan { border-color: var(--cyan); background: var(--cyan-dim); color: var(--cyan); }
+.diagram-arrow { color: var(--text-dim); font-size: 1.5rem; line-height: 1; }
+
+/* Slide sections */
+.slide { @apply rounded-2xl border p-8 mb-8; background: var(--card); border-color: var(--border); }
+.slide h2 { @apply text-2xl font-bold mt-1 mb-4; }
+.slide h3 { @apply text-lg font-semibold mt-6 mb-2; }
+
+/* Tags */
+.weakness-tag { @apply text-xs font-bold px-3 py-1 rounded-full; background: var(--red-dim); color: var(--red); }
+.fix-tag { @apply text-xs font-bold px-3 py-1 rounded-full; background: var(--green-dim); color: var(--green); }
+.info-tag { @apply text-xs font-bold px-3 py-1 rounded-full; background: var(--accent-dim); color: var(--accent); }
+
+/* Metrics */
+.metric-card { @apply rounded-lg p-3 text-center; background: var(--bg-alt); border: 1px solid var(--border); }
+.metric-value { @apply text-2xl font-bold; }
+.metric-label { @apply text-xs mt-1; color: var(--text-muted); }
+
+/* Images */
+.img-container { @apply rounded-lg overflow-hidden border; border-color: var(--border); background: var(--bg-alt); }
+.img-container img { @apply w-full h-auto; image-rendering: pixelated; }
+
+/* Select */
+.select-field { @apply px-3 py-2 rounded-lg border text-sm; background: var(--bg-alt); border-color: var(--border); color: var(--text); }
+
+/* Badges */
+.badge { @apply text-xs px-2 py-0.5 rounded-full font-semibold; }
+.badge-green { background: var(--green-dim); color: var(--green); }
+.badge-yellow { background: var(--yellow-dim); color: var(--yellow); }
+.badge-blue { background: var(--accent-dim); color: var(--accent); }
+.badge-red { background: var(--red-dim); color: var(--red); }
+.badge-accent { background: var(--accent-dim); color: var(--accent); }
+
+/* Code blocks */
+.code-block { @apply rounded-lg p-4 text-xs font-mono overflow-x-auto whitespace-pre; background: var(--code-bg); border: 1px solid var(--border); color: var(--text-muted); }
+.code-bad { border-left: 3px solid var(--red); }
+.code-good { border-left: 3px solid var(--green); }
+
+/* Data table */
+.data-table { @apply w-full text-sm; border-collapse: separate; border-spacing: 0; }
+.data-table th { @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider; color: var(--text-muted); background: var(--bg-alt); border-bottom: 1px solid var(--border); }
+.data-table td { @apply px-4 py-3; border-bottom: 1px solid var(--border); }
+.data-table tr:last-child td { border-bottom: none; }
+
+/* Metric highlights (theme-aware) */
+.metric-highlight-green { color: var(--highlight-green); }
+.metric-highlight-yellow { color: var(--highlight-yellow); }
+.metric-highlight-default { color: var(--text); }
+
+/* Severity/status colors (theme-aware) */
+.hl-red { color: var(--highlight-red); }
+.hl-green { color: var(--highlight-green); }
+.hl-blue { color: var(--highlight-blue); }
+.hl-orange { color: var(--highlight-orange); }
+.hl-yellow { color: var(--highlight-yellow); }
+.hl-zinc { color: var(--highlight-zinc); }
+.hl-bg-red { background: var(--red-dim); color: var(--highlight-red); }
+.hl-bg-green { background: var(--green-dim); color: var(--highlight-green); }
+.hl-bg-blue { background: var(--accent-dim); color: var(--highlight-blue); }
+.hl-bg-orange { background: var(--orange-dim); color: var(--highlight-orange); }
+.hl-bg-yellow { background: var(--yellow-dim); color: var(--highlight-yellow); }
+.hl-bg-zinc { background: rgba(161,161,170,0.1); color: var(--highlight-zinc); }
+
+/* Theme transition on key surfaces */
+.card, .slide, .nav-tab, .btn-primary, .select-field, .code-block, .metric-card, .badge { transition: background 0.3s, border-color 0.3s, color 0.3s; }
