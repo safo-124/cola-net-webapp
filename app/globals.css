@@ -169,3 +169,242 @@ body {
 
 /* Theme transition on key surfaces */
 .card, .slide, .nav-tab, .btn-primary, .select-field, .code-block, .metric-card, .badge { transition: background 0.3s, border-color 0.3s, color 0.3s; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   NEW UI IMPROVEMENTS
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Sticky header ─────────────────────────────────────────────────── */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+}
+.header-logo {
+  @apply flex items-center justify-center w-9 h-9 rounded-lg shrink-0;
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+.icon-btn {
+  @apply p-2 rounded-lg transition-all;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.icon-btn:hover { color: var(--text); background: var(--card-elevated); }
+
+/* ── Slide dot navigation ──────────────────────────────────────────── */
+.slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+.slide-dot:hover { background: var(--text-muted); transform: scale(1.25); }
+.slide-dot-active { background: var(--accent); transform: scale(1.25); box-shadow: 0 0 6px var(--accent); }
+
+/* ── Skeleton loading ──────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, var(--border) 25%, var(--card-elevated) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 6px;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Entrance animations ──────────────────────────────────────────── */
+.fade-in {
+  animation: fadeSlideUp 0.35s ease-out both;
+}
+.slide-down {
+  animation: slideDown 0.3s ease-out both;
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Animated timing bars ──────────────────────────────────────────── */
+.bar-animate {
+  animation: barGrow 0.8s ease-out both;
+}
+@keyframes barGrow {
+  from { width: 0; }
+}
+
+/* ── Processing spinner ──────────────────────────────────────────── */
+.processing-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.process-step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* ── Winner banner ─────────────────────────────────────────────────── */
+.winner-banner {
+  @apply rounded-xl px-5 py-4 border-2;
+  animation: fadeSlideUp 0.4s ease-out both;
+}
+.winner-icon {
+  @apply text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap;
+}
+
+/* ── History badge ─────────────────────────────────────────────────── */
+.history-badge {
+  @apply absolute -top-1.5 -right-1.5 text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full;
+  background: var(--accent);
+  color: white;
+}
+
+/* ── Keyboard hint ─────────────────────────────────────────────────── */
+.keyboard-hint {
+  @apply fixed bottom-4 right-4 text-xs px-3 py-1.5 rounded-lg;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  opacity: 0.7;
+  pointer-events: none;
+}
+.keyboard-hint kbd {
+  @apply px-1.5 py-0.5 rounded text-[10px] font-mono mx-0.5;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+}
+
+/* ── Scrollbar hide utility ──────────────────────────────────────── */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ── Image Compare slider ──────────────────────────────────────────── */
+.compare-slider-wrapper {
+  @apply rounded-xl overflow-hidden border;
+  border-color: var(--border);
+  background: var(--bg-alt);
+}
+.compare-slider {
+  position: relative;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.compare-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+.compare-clip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.compare-divider {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.compare-line {
+  width: 2px;
+  flex: 1;
+  background: white;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+.compare-handle {
+  @apply w-8 h-8 rounded-full flex items-center justify-center;
+  background: white;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  pointer-events: auto;
+  cursor: ew-resize;
+}
+.compare-badge {
+  @apply absolute bottom-3 text-[10px] font-semibold px-2 py-0.5 rounded-full;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  backdrop-filter: blur(4px);
+}
+
+/* ── Lightbox ──────────────────────────────────────────────────────── */
+.lightbox-overlay {
+  @apply fixed inset-0 z-[100] flex items-center justify-center;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.2s ease-out;
+}
+.lightbox-close {
+  @apply absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.3); }
+.lightbox-content { @apply p-4 max-w-[90vw] max-h-[90vh] flex flex-col items-center; }
+.lightbox-img { @apply max-w-full max-h-[80vh] rounded-lg; image-rendering: pixelated; }
+.lightbox-caption { @apply mt-3 text-sm text-center; color: rgba(255,255,255,0.7); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Tooltip ──────────────────────────────────────────────────────── */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.tooltip-bubble {
+  @apply absolute bottom-full left-1/2 mb-2 px-3 py-1.5 rounded-lg text-xs font-normal whitespace-normal z-50;
+  transform: translateX(-50%);
+  background: var(--card-elevated);
+  border: 1px solid var(--border);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  pointer-events: none;
+  max-width: 220px;
+  text-align: center;
+  animation: fadeIn 0.15s ease-out;
+}
+
+/* ── Mobile responsive fixes ─────────────────────────────────────── */
+@media (max-width: 640px) {
+  .slide { @apply p-4 mb-4 rounded-xl; }
+  .slide h2 { @apply text-xl; }
+  .nav-tab { @apply px-3 py-2 text-xs; }
+  .keyboard-hint { display: none; }
+  .card { @apply p-3; }
+  .winner-banner { @apply px-3 py-3; }
+  .compare-handle { @apply w-6 h-6; }
+}
