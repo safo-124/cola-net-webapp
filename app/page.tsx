@@ -223,16 +223,16 @@ function SlideNav({
   onGoto: (idx: number) => void;
 }) {
   return (
-    <div className="flex items-center justify-between mt-8 pt-4" style={{ borderTop: "1px solid var(--border)" }}>
+    <div className="flex items-center justify-between mt-6 sm:mt-8 pt-4" style={{ borderTop: "1px solid var(--border)" }}>
       <button
         onClick={onPrev}
         disabled={current === 0}
-        className="btn-primary text-sm disabled:opacity-30"
+        className="btn-primary text-xs sm:text-sm disabled:opacity-30"
       >
         ← Previous
       </button>
-      <div className="flex items-center gap-3">
-        <div className="flex gap-1.5">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex gap-1 sm:gap-1.5">
           {Array.from({ length: total }).map((_, i) => (
             <button
               key={i}
@@ -242,14 +242,14 @@ function SlideNav({
             />
           ))}
         </div>
-        <span className="text-xs ml-2" style={{ color: "var(--text-muted)" }}>
+        <span className="text-xs ml-1 sm:ml-2" style={{ color: "var(--text-muted)" }}>
           {current + 1}/{total}
         </span>
       </div>
       <button
         onClick={onNext}
         disabled={current === total - 1}
-        className="btn-primary text-sm disabled:opacity-30"
+        className="btn-primary text-xs sm:text-sm disabled:opacity-30"
       >
         Next →
       </button>
@@ -522,13 +522,13 @@ export default function Home() {
     <main className="min-h-screen pb-6">
       {/* ── Sticky Header ── */}
       <header className="sticky-header">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <div className="header-logo">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
             </div>
             <div className="min-w-0">
-              <h1 className="text-lg font-bold truncate">COLA-Net</h1>
+              <h1 className="text-base sm:text-lg font-bold truncate">COLA-Net</h1>
               <p className="text-xs truncate hidden sm:block" style={{ color: "var(--text-muted)" }}>
                 Collaborative Attention Network — Analysis &amp; Improvements
               </p>
@@ -570,7 +570,7 @@ export default function Home() {
         </div>
 
         {/* ── Tab navigation (inside sticky header) ── */}
-        <nav className="max-w-7xl mx-auto px-6 pb-2 flex gap-1 overflow-x-auto scrollbar-hide">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 pb-2 flex gap-1 overflow-x-auto scrollbar-hide">
           {TABS.map((t) => (
             <button
               key={t.id}
@@ -585,7 +585,7 @@ export default function Home() {
       </header>
 
       {/* ── Tab content ── */}
-      <div className="max-w-7xl mx-auto px-6 mt-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-4">
 
         {/* Article slides */}
         {tab === "article" && renderSlides(articleSlides, articleIdx, setArticleIdx)}
@@ -843,7 +843,7 @@ export default function Home() {
                       </button>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                     <div>
                       <h3 className="text-xs font-medium mb-2 text-center" style={{ color: "var(--text-muted)" }}>Degraded Input</h3>
                       <div className="grid grid-cols-2 gap-2">
@@ -928,7 +928,7 @@ export default function Home() {
                 </div>
 
                 {compareMode === "grid" ? (
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                     <ImagePanel
                       title="Original (Clean)" src={result.original}
                       onZoom={(s, a) => setLightbox({ src: s, alt: a })}
@@ -993,7 +993,7 @@ export default function Home() {
                             <span className="badge badge-blue"><span className="mr-0.5">✓</span>CPU-Trained</span>
                             New COLA-{result.variant} — {entry.experiment}
                           </h3>
-                          <div className="grid grid-cols-3 gap-4 mb-3">
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-3">
                             <Metric label="Best PSNR" value={entry.best_psnr ?? "—"} unit="dB" highlight="green" />
                             <Metric label="Best Epoch" value={entry.best_epoch ?? "—"} />
                             <Metric label="Total Epochs" value={entry.total_epochs ?? "—"} />
@@ -1003,7 +1003,7 @@ export default function Home() {
                               <summary className="text-xs cursor-pointer" style={{ color: "var(--text-muted)" }}>
                                 Show epoch-by-epoch training log ({entry.training_log.length} epochs)
                               </summary>
-                              <div className="mt-2 max-h-48 overflow-y-auto text-xs font-mono" style={{ color: "var(--text-muted)" }}>
+                              <div className="mt-2 max-h-48 overflow-y-auto overflow-x-auto text-xs font-mono" style={{ color: "var(--text-muted)" }}>
                                 <table className="w-full">
                                   <thead>
                                     <tr className="text-left" style={{ borderBottom: "1px solid var(--border)" }}>

@@ -78,7 +78,7 @@ export function SlideIntro() {
       </div>
 
       <h3>Three Tasks</h3>
-      <div className="grid grid-cols-3 gap-3 mt-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
         {[
           {
             task: "Grayscale Denoising",
@@ -387,7 +387,7 @@ export function SlideResults() {
         </table>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
         <div className="metric-card">
           <div className="metric-value hl-blue">1.10M</div>
           <div className="metric-label">COLA-B Parameters</div>

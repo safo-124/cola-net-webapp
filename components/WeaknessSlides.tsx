@@ -232,7 +232,7 @@ if os.path.exists(self.dir):
       <h3>Code Duplication</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
         <DiagramSection label="Original: 3 copies of everything" labelColor="red">
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             {["DN_Gray/", "DN_Real/", "CAR/"].map((d) => (
               <FlowCol key={d}>
                 <Box color="red" small>{d}</Box>
@@ -356,7 +356,7 @@ For 512×512 image, stride=4:
         caption="Look closely at textures: MSE-trained models tend to produce smoother outputs."
         maxHeight="280px"
       />
-      <div className="grid grid-cols-3 gap-4 mt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
         <div className="card text-center">
           <div className="text-sm font-semibold mb-2">L2 (MSE) Loss</div>
           <div className="text-xs" style={{ color: "var(--text-muted)" }}>

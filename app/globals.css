@@ -402,9 +402,39 @@ body {
 @media (max-width: 640px) {
   .slide { @apply p-4 mb-4 rounded-xl; }
   .slide h2 { @apply text-xl; }
+  .slide h3 { @apply text-base; }
   .nav-tab { @apply px-3 py-2 text-xs; }
   .keyboard-hint { display: none; }
   .card { @apply p-3; }
   .winner-banner { @apply px-3 py-3; }
   .compare-handle { @apply w-6 h-6; }
+  .metric-card { @apply p-2; }
+  .metric-value { @apply text-lg; }
+  .metric-label { @apply text-[10px]; }
+  .code-block { @apply p-2 text-[10px]; }
+  .data-table th { @apply px-2 py-2 text-[10px]; }
+  .data-table td { @apply px-2 py-2 text-xs; }
+  .diagram-box { @apply px-2 py-1.5 text-[10px]; min-width: 60px; }
+  .diagram-arrow { font-size: 1.2rem; }
+  .lightbox-content { @apply p-2; }
+  .lightbox-img { max-height: 70vh; }
+  .winner-icon { @apply text-[10px] px-2 py-0.5; }
+
+  /* Sticky header compact */
+  .sticky-header { backdrop-filter: blur(8px); }
+  .header-logo { @apply w-7 h-7; }
+
+  /* Process steps compact */
+  .process-step-dot { width: 8px; height: 8px; }
+
+  /* History badge smaller */
+  .history-badge { @apply w-3.5 h-3.5 text-[8px]; }
+}
+
+/* ── Extra small screens ─────────────────────────────────────────── */
+@media (max-width: 380px) {
+  .slide { @apply p-3 mb-3; }
+  .card { @apply p-2; }
+  .nav-tab { @apply px-2 py-1.5 text-[10px]; }
+  .btn-primary { @apply px-3 py-2 text-xs; }
 }
