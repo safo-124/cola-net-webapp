@@ -134,7 +134,7 @@ const TOTAL_SLIDES = 16;
 
 export async function generatePPTX(): Promise<void> {
   const pptx = new PptxGenJS();
-  pptx.author = "COLA-Net Analysis";
+  pptx.author = "Emmanuel Safo Acheampong";
   pptx.title = "COLA-Net: Analysis, Weaknesses & Improvements";
   pptx.subject = "Deep Learning Image Restoration";
   pptx.layout = "LAYOUT_WIDE"; // 13.33 × 7.5
@@ -177,6 +177,11 @@ export async function generatePPTX(): Promise<void> {
     s.addText("IEEE Transactions on Multimedia, 2021", {
       x: 0.8, y: 4.35, w: 11, h: 0.35,
       fontSize: 11, color: TEXT_LIGHT, fontFace: FONT, italic: true,
+    });
+    // Presenter info
+    s.addText("Presented by:  Emmanuel Safo Acheampong   |   Student ID: 153058678", {
+      x: 0.8, y: 4.75, w: 11, h: 0.35,
+      fontSize: 12, color: ACCENT, fontFace: FONT, bold: true,
     });
     // Three task badges
     const badges = [
@@ -726,8 +731,12 @@ export async function generatePPTX(): Promise<void> {
       fontSize: 52, bold: true, color: "FFFFFF", fontFace: FONT, align: "center",
     });
     s.addText("Questions & Discussion", {
-      x: 0.5, y: 2.0, w: 12, h: 0.6,
+      x: 0.5, y: 1.8, w: 12, h: 0.6,
       fontSize: 20, color: "FFFFFFCC", fontFace: FONT, align: "center",
+    });
+    s.addText("Emmanuel Safo Acheampong  |  Student ID: 153058678", {
+      x: 0.5, y: 2.4, w: 12, h: 0.45,
+      fontSize: 14, color: "FFFFFFDD", fontFace: FONT, align: "center",
     });
 
     // Info cards below
